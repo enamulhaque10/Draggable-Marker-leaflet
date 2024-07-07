@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+  </head>
+
+  <body>
+    <div id="map" style="height: 800px; width: 800px"></div>
+    <text-area id="lat"></text-area>
+    <text-area id="lng"></text-area>
+
+    <script>
+      let map = new L.Map("map", {
+        center: [23.8041, 90.4152],
+        zoom: 12,
+      });
+      let my_divicon = L.divIcon({
+        class: "arrow_box",
+      });
+      let marker = L.marker([23.8041, 90.4152], {
+        draggable: true,
+        autoPan: true,
+      }).addTo(map);
+
+      L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          'Map data, copyright <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      function addToTextBox(lt, ln) {
+        document.getElementById("lat").innerHTML = lt;
+        document.getElementById("lng").innerHTML = ln;
+      }
+
+      marker.on("dragend", function (event) {
+        let marker = event.target;
+        let location = marker.getLatLng();
+        let lat = location.lat;
+        let lon = location.lng;
+        addToTextBox(lat, lon);
+      });
+    </script>
+  </body>
+</html>
