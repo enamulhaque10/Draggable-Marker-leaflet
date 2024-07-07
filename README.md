@@ -1,9 +1,11 @@
 # Draggable-Marker-leaflet
 
-#Run Cmd
+# Run Cmd
+
 google-chrome <filename>.html
+
 firefox <filename>.html
 
-# Draggable Marker
+# Marker
 
 Create New (lat, long) instead of orginal (lat, long)
