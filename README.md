@@ -2,9 +2,9 @@
 
 # Run Cmd
 
-google-chrome <filename>.html
+google-chrome ("filename").html
 
-firefox <filename>.html
+firefox ("filename").html
 
 # Marker
 
